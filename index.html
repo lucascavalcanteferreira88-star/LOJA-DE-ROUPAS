@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilo & Moda - Loja de Roupas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .cart-icon {
+            background-color: #e63946;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #1a1a1a;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: #e63946;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .size-select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-add {
+            width: 100%;
+            background-color: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-add:hover {
+            background-color: #333;
+        }
+
+        .checkout-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cart-summary {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .cart-total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        form input {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            background-color: #219150;
+        }
+
+        .empty-cart {
+            color: #777;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">URBAN STYLE</div>
+        <div class="cart-icon">🛒 Carrinho (<span id="cart-count">0</span>)</div>
+    </header>
+
+    <section class="hero">
+        <h1>Nova Coleção de Inverno</h1>
+        <p>As melhores peças com os melhores preços</p>
+    </section>
+
+    <main class="container">
+        <h2>Nossos Produtos</h2>
+        
+        <div class="products-grid">
+            <!-- Produto 1: Camisa -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=500&q=80" alt="Camisa Social">
+                <div class="product-info">
+                    <div class="product-title">Camisa Social Slim Fit</div>
+                    <div class="product-price">R$ 119,90</div>
+                    <select class="size-select" id="size-1">
+                        <option value="P">Tamanho: P</option>
+                        <option value="M">Tamanho: M</option>
+                        <option value="G">Tamanho: G</option>
+                    </select>
+                    <button class="btn-add" onclick="addToCart('Camisa Social Slim Fit', 119.90, 'size-1')">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Produto 2: Calça -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=500&q=80" alt="Calça Jeans">
+                <div class="product-info">
+                    <div class="product-title">Calça Jeans Masculina</div>
+                    <div class="product-price">R$ 159,90</div>
+                    <select class="size-select" id="size-2">
+                        <option value="38">Tamanho: 38</option>
+                        <option value="40">Tamanho: 40</option>
+                        <option value="42">Tamanho: 42</option>
+                    </select>
+                    <button class="btn-add" onclick="addToCart('Calça Jeans Masculina', 159.90, 'size-2')">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Produto 3: Tênis -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80" alt="Tênis Esportivo">
+                <div class="product-info">
+                    <div class="product-title">Tênis Red Runner</div>
+                    <div class="product-price">R$ 249,90</div>
+                    <select class="size-select" id="size-3">
+                        <option value="39">Tamanho: 39</option>
+                        <option value="40">Tamanho: 40</option>
+                        <option value="41">Tamanho: 41</option>
+                    </select>
+                    <button class="btn-add" onclick="addToCart('Tênis Red Runner', 249.90, 'size-3')">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção do Carrinho e Formulário -->
+        <section class="checkout-section">
+            <h2>Finalizar Compra</h2>
+            <div class="checkout-container">
+                
+                <!-- Resumo do Carrinho -->
+                <div class="cart-summary">
+                    <h3>Seu Carrinho</h3>
+                    <div id="cart-items" style="margin-top: 1rem;">
+                        <p class="empty-cart">Seu carrinho está vazio.</p>
+                    </div>
+                    <div class="cart-total">
+                        Total: R$ <span id="cart-total-price">0,00</span>
+                    </div>
+                </div>
+
+                <!-- Formulário de Endereço e Dados -->
+                <div>
+                    <h3>Dados de Entrega</h3>
+                    <form id="order-form" onsubmit="submitOrder(event)">
+                        <div class="form-group">
+                            <label for="name">Nome Completo:</label>
+                            <input type="text" id="name" required placeholder="Ex: João Silva">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Telefone / WhatsApp:</label>
+                            <input type="tel" id="phone" required placeholder="Ex: (11) 99999-9999">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" required placeholder="Ex: joao@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Endereço de Entrega (Rua, Nº, Bairro):</label>
+                            <input type="text" id="address" required placeholder="Ex: Av. Paulista, 1000 - Apto 21">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">Cidade / Estado:</label>
+                            <input type="text" id="city" required placeholder="Ex: São Paulo / SP">
+                        </div>
+
+                        <button type="submit" class="btn-submit">Confirmar Pedido</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let cart = [];
+
+        function addToCart(name, price, selectId) {
+            const sizeElement = document.getElementById(selectId);
+            const selectedSize = sizeElement.value;
+
+            const item = {
+                id: Date.now(),
+                name: name,
+                price: price,
+                size: selectedSize
+            };
+
+            cart.push(item);
+            updateCartUI();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            // Atualiza contador no header
+            document.getElementById('cart-count').innerText = cart.length;
+
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total-price');
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-cart">Seu carrinho está vazio.</p>';
+                cartTotalElement.innerText = '0,00';
+                return;
+            }
+
+            // Limpa conteúdo atual
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            // Renderiza itens do carrinho
+            cart.forEach(item => {
+                total += item.price;
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <div>
+                        <strong>${item.name}</strong><br>
+                        <small>Tam: ${item.size} - R$ ${item.price.toFixed(2)}</small>
+                    </div>
+                    <button style="background:none; border:none; color:red; cursor:pointer;" onclick="removeFromCart(${item.id})">X</button>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+            });
+
+            // Atualiza o total
+            cartTotalElement.innerText = total.toFixed(2).replace('.', ',');
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+
+            if (cart.length === 0) {
+                alert('Adicione pelo menos um produto ao carrinho antes de finalizar!');
+                return;
+            }
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+
+            // Alerta simulando o processamento da compra
+            alert(`Obrigado pela compra, ${name}!\n\nSeu pedido foi confirmado e será entregue em:\n${address}\n\nEntraremos em contato pelo telefone ${phone}.`);
+
+            // Reseta o carrinho e formulário
+            cart = [];
+            updateCartUI();
+            document.getElementById('order-form').reset();
+        }
+    </script>
+</body>
+</html>
