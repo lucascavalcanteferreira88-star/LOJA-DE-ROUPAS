@@ -156,10 +156,10 @@ function submitOrder(event) {
     // Confirmação do pedido
 
     alert(
-        Obrigado pela compra, ${name}!\n\n +
-        Seu pedido foi confirmado e será entregue em:\n +
-        ${address}\n\n +
-        Entraremos em contato pelo telefone ${phone}.
+        `Obrigado pela compra, ${name}!\n\n` +
+        `Seu pedido foi confirmado e será entregue em:\n` +
+        `${address}\n\n` +
+        `Entraremos em contato pelo telefone ${phone}.`
     );
 
 
