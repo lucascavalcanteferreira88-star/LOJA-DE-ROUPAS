@@ -197,7 +197,7 @@ function prepareOrder(event) {
   pre.textContent = summary;
   const whatsappButton = document.createElement("a");
   whatsappButton.className = "button button-accent";
-  whatsappButton.href = "https://wa.me/5542991843516?text=" + encodeURIComponent(summary);
+  whatsappButton.href = "https://wa.me/5542991133261?text=" + encodeURIComponent(summary);
   whatsappButton.target = "_blank";
   whatsappButton.rel = "noopener noreferrer";
   whatsappButton.textContent = "Enviar pedido pelo WhatsApp";
