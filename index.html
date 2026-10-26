@@ -1,271 +1,109 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estilo & Moda - Loja de Roupas</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Encontre roupas, calçados e acessórios na Urban Style. Explore novidades e monte seu carrinho.">
+  <meta name="theme-color" content="#171717">
+  <title>Urban Style | Moda para o seu dia</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="top-strip">✨ Novidades da estação • Encontre seu próximo look</div>
+  <header class="site-header">
+    <a class="logo" href="#" aria-label="Urban Style - início">URBAN<span>STYLE</span></a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#produtos">Produtos</a><a href="#beneficios">Por que comprar?</a><a href="#duvidas">Dúvidas</a>
+    </nav>
+    <button class="header-cart" id="go-cart" type="button" aria-label="Ir para o carrinho">🛒 Carrinho <span id="cart-count">0</span></button>
+  </header>
 
-    <header>
-        <div class="logo">URBAN STYLE</div>
-
-        <div class="cart-icon">
-            🛒 Carrinho (<span id="cart-count">0</span>)
-        </div>
-    </header>
-
+  <main>
     <section class="hero">
-        <h1>Nova Coleção de Inverno</h1>
-        <p>As melhores peças com os melhores preços</p>
+      <div class="hero-content">
+        <p class="eyebrow">SEU ESTILO, SUAS REGRAS</p>
+        <h1>Vista a sua<br><span>melhor versão.</span></h1>
+        <p>Peças versáteis para acompanhar você em todos os momentos.</p>
+        <a class="button button-light" href="#produtos">Explorar coleção <span aria-hidden="true">→</span></a>
+      </div>
     </section>
 
-    <main class="container">
+    <section class="benefits" id="beneficios" aria-label="Vantagens da loja">
+      <article><span class="benefit-icon">🚚</span><div><strong>Entrega prática</strong><p>Confira as opções no atendimento</p></div></article>
+      <article><span class="benefit-icon">💳</span><div><strong>Compra simples</strong><p>Monte seu carrinho em poucos cliques</p></div></article>
+      <article><span class="benefit-icon">💬</span><div><strong>Atendimento próximo</strong><p>Tire dúvidas antes de escolher</p></div></article>
+    </section>
 
-        <h2>Nossos Produtos</h2>
+    <section class="catalog section-wrap" id="produtos">
+      <div class="section-heading">
+        <div><p class="eyebrow">ESCOLHAS DA ESTAÇÃO</p><h2>Encontre seu estilo</h2><p class="section-description">Explore a coleção, filtre por categoria e escolha seus favoritos.</p></div>
+        <span class="catalog-count" id="catalog-count">9 produtos</span>
+      </div>
+      <div class="catalog-tools">
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Buscar produto..." aria-label="Buscar produto pelo nome"></label>
+        <label class="sort-label" for="sort-select">Ordenar por
+          <select id="sort-select"><option value="featured">Destaques</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option><option value="name">Nome A–Z</option></select>
+        </label>
+      </div>
+      <div class="filter-row" role="group" aria-label="Filtrar produtos por categoria">
+        <button class="filter-chip active" data-category="todos" type="button" aria-pressed="true">Todos</button>
+        <button class="filter-chip" data-category="camisas" type="button" aria-pressed="false">Camisas</button>
+        <button class="filter-chip" data-category="calcas" type="button" aria-pressed="false">Calças</button>
+        <button class="filter-chip" data-category="calcados" type="button" aria-pressed="false">Calçados</button>
+        <button class="filter-chip" data-category="acessorios" type="button" aria-pressed="false">Acessórios</button>
+        <button class="filter-chip" data-category="favoritos" type="button" aria-pressed="false">♡ Favoritos</button>
+      </div>
+      <div class="products-grid" id="products-grid" aria-live="polite"></div>
+      <p class="no-results" id="no-results" hidden>Nenhum produto encontrado. Tente outro nome ou categoria.</p>
+    </section>
 
-        <div class="products-grid">
+    <section class="help-banner">
+      <div><p class="eyebrow">PRECISA DE UMA MÃO?</p><h2>Vamos encontrar o look ideal?</h2><p>Se tiver dúvidas sobre tamanho ou produto, fale com a nossa equipe.</p></div>
+      <a class="button button-dark" href="#atendimento">Ver opções de atendimento</a>
+    </section>
 
-            <!-- Produto 1 -->
-            <div class="product-card">
-
-                <img 
-                    src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=500&q=80"
-                    alt="Camisa Social"
-                >
-
-                <div class="product-info">
-
-                    <div class="product-title">
-                        Camisa Social Slim Fit
-                    </div>
-
-                    <div class="product-price">
-                        R$ 119,90
-                    </div>
-
-                    <select class="size-select" id="size-1">
-                        <option value="P">Tamanho: P</option>
-                        <option value="M">Tamanho: M</option>
-                        <option value="G">Tamanho: G</option>
-                    </select>
-
-                    <button 
-                        class="btn-add"
-                        onclick="addToCart('Camisa Social Slim Fit', 119.90, 'size-1')"
-                    >
-                        Adicionar ao Carrinho
-                    </button>
-
-                </div>
-            </div>
-
-
-            <!-- Produto 2 -->
-            <div class="product-card">
-
-                <img 
-                    src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=500&q=80"
-                    alt="Calça Jeans"
-                >
-
-                <div class="product-info">
-
-                    <div class="product-title">
-                        Calça Jeans Masculina
-                    </div>
-
-                    <div class="product-price">
-                        R$ 159,90
-                    </div>
-
-                    <select class="size-select" id="size-2">
-                        <option value="38">Tamanho: 38</option>
-                        <option value="40">Tamanho: 40</option>
-                        <option value="42">Tamanho: 42</option>
-                    </select>
-
-                    <button 
-                        class="btn-add"
-                        onclick="addToCart('Calça Jeans Masculina', 159.90, 'size-2')"
-                    >
-                        Adicionar ao Carrinho
-                    </button>
-
-                </div>
-            </div>
-
-
-            <!-- Produto 3 -->
-            <div class="product-card">
-
-                <img 
-                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80"
-                    alt="Tênis Esportivo"
-                >
-
-                <div class="product-info">
-
-                    <div class="product-title">
-                        Tênis Red Runner
-                    </div>
-
-                    <div class="product-price">
-                        R$ 249,90
-                    </div>
-
-                    <select class="size-select" id="size-3">
-                        <option value="39">Tamanho: 39</option>
-                        <option value="40">Tamanho: 40</option>
-                        <option value="41">Tamanho: 41</option>
-                    </select>
-
-                    <button 
-                        class="btn-add"
-                        onclick="addToCart('Tênis Red Runner', 249.90, 'size-3')"
-                    >
-                        Adicionar ao Carrinho
-                    </button>
-
-                </div>
-            </div>
-
+    <section class="checkout section-wrap" id="carrinho">
+      <div class="section-heading"><div><p class="eyebrow">QUASE LÁ</p><h2>Seu carrinho</h2><p class="section-description">Revise os itens e preencha os dados para preparar seu pedido.</p></div></div>
+      <div class="checkout-layout">
+        <div class="cart-panel">
+          <div class="panel-heading"><h3>Itens selecionados</h3><span id="cart-items-label">0 itens</span></div>
+          <div id="cart-items"><p class="empty-cart">Seu carrinho está vazio. Explore os produtos e adicione seus favoritos!</p></div>
+          <div class="cart-total"><span>Subtotal</span><strong>R$ <span id="cart-total-price">0,00</span></strong></div>
+          <p class="cart-note">O valor de frete e as condições de pagamento devem ser confirmados no atendimento.</p>
         </div>
+        <div class="form-panel">
+          <h3>Dados para contato</h3>
+          <p class="form-intro">Preencha para gerar um resumo do pedido. Esta demonstração não processa pagamentos.</p>
+          <form id="order-form">
+            <div class="form-group"><label for="name">Nome completo</label><input id="name" name="name" autocomplete="name" required placeholder="Como podemos chamar você?"></div>
+            <div class="form-group"><label for="phone">Telefone / WhatsApp</label><input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="(00) 00000-0000"></div>
+            <div class="form-group"><label for="email">E-mail (opcional)</label><input id="email" name="email" type="email" autocomplete="email" placeholder="voce@email.com"></div>
+            <button class="button button-accent full-width" type="submit">Preparar resumo do pedido</button>
+            <p class="privacy-note">Seus dados são usados apenas nesta demonstração local e não são enviados para um servidor.</p>
+          </form>
+          <div id="order-result" class="order-result" role="status" hidden></div>
+        </div>
+      </div>
+    </section>
 
+    <section class="faq-section" id="duvidas">
+      <div class="section-wrap"><p class="eyebrow">INFORMAÇÃO CLARA</p><h2>Perguntas frequentes</h2>
+        <div class="faq-list">
+          <details><summary>Como escolho o tamanho certo?</summary><p>Selecione o tamanho disponível em cada produto. Se estiver em dúvida, peça orientação ao atendimento antes de concluir a compra.</p></details>
+          <details><summary>O pedido já é uma compra confirmada?</summary><p>Não. Este é um catálogo demonstrativo: o resumo organiza sua seleção, mas pagamento, estoque, frete e confirmação real precisam ser combinados com a loja.</p></details>
+          <details><summary>Posso alterar o carrinho?</summary><p>Sim. Você pode mudar a quantidade ou remover produtos antes de preparar o resumo do pedido.</p></details>
+        </div>
+      </div>
+    </section>
 
-        <!-- Checkout -->
-        <section class="checkout-section">
-
-            <h2>Finalizar Compra</h2>
-
-            <div class="checkout-container">
-
-                <!-- Carrinho -->
-                <div class="cart-summary">
-
-                    <h3>Seu Carrinho</h3>
-
-                    <div id="cart-items">
-                        <p class="empty-cart">
-                            Seu carrinho está vazio.
-                        </p>
-                    </div>
-
-                    <div class="cart-total">
-                        Total: R$ 
-                        <span id="cart-total-price">0,00</span>
-                    </div>
-
-                </div>
-
-
-                <!-- Formulário -->
-                <div>
-
-                    <h3>Dados de Entrega</h3>
-
-                    <form id="order-form" onsubmit="submitOrder(event)">
-
-                        <div class="form-group">
-
-                            <label for="name">
-                                Nome Completo:
-                            </label>
-
-                            <input 
-                                type="text"
-                                id="name"
-                                required
-                                placeholder="Ex: João Silva"
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="phone">
-                                Telefone / WhatsApp:
-                            </label>
-
-                            <input 
-                                type="tel"
-                                id="phone"
-                                required
-                                placeholder="Ex: (42) 99113-3261"
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="email">
-                                E-mail:
-                            </label>
-
-                            <input 
-                                type="email"
-                                id="email"
-                                required
-                                placeholder="Ex: joao@email.com"
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="address">
-                                Endereço de Entrega (Rua, Nº, Bairro):
-                            </label>
-
-                            <input 
-                                type="text"
-                                id="address"
-                                required
-                                placeholder="Ex: Av. Paulista, 1000 - Apto 21"
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="city">
-                                Cidade / Estado:
-                            </label>
-
-                            <input 
-                                type="text"
-                                id="city"
-                                required
-                                placeholder="Ex: São Paulo / SP"
-                            >
-
-                        </div>
-
-
-                        <button 
-                            type="submit"
-                            class="btn-submit"
-                        >
-                            Confirmar Pedido
-                        </button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <script src="script.js"></script>
-
+    <section class="contact-section" id="atendimento">
+      <div><p class="eyebrow">ESTAMOS AQUI PARA AJUDAR</p><h2>Atendimento ao cliente</h2><p>Use o formulário para organizar sua seleção e personalize os canais oficiais da loja antes de publicar.</p></div>
+      <a class="button button-light" href="#carrinho">Montar meu pedido</a>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="logo footer-logo" href="#">URBAN<span>STYLE</span></a><p>Moda para o seu dia, do seu jeito.</p><small>© <span id="current-year"></span> Urban Style. Projeto demonstrativo desenvolvido por Lucas Cavalcante Ferreira.</small></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
