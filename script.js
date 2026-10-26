@@ -192,9 +192,15 @@ function prepareOrder(event) {
   const heading = document.createElement("h4");
   heading.textContent = "Resumo preparado!";
   const description = document.createElement("p");
-  description.textContent = "Confira os itens abaixo. Nenhum pedido foi enviado e nenhum pagamento foi realizado.";
+  description.textContent = "Confira os itens abaixo antes de enviar a mensagem pelo WhatsApp. O pedido só será confirmado pela loja.";
   const pre = document.createElement("pre");
   pre.textContent = summary;
+  const whatsappButton = document.createElement("a");
+  whatsappButton.className = "button button-accent";
+  whatsappButton.href = "https://wa.me/5542991843516?text=" + encodeURIComponent(summary);
+  whatsappButton.target = "_blank";
+  whatsappButton.rel = "noopener noreferrer";
+  whatsappButton.textContent = "Enviar pedido pelo WhatsApp";
   const copyButton = document.createElement("button");
   copyButton.type = "button";
   copyButton.className = "button button-dark";
@@ -207,7 +213,7 @@ function prepareOrder(event) {
       showToast("Não foi possível copiar automaticamente. Selecione e copie o resumo.");
     }
   });
-  result.append(heading, description, pre, copyButton);
+  result.append(heading, description, pre, whatsappButton, copyButton);
   result.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
